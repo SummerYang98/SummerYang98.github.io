@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Docker | Hexo</title>
+  <meta name="description" content="What is “Docker”? Let’s study together!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="http://summeryang98.github.io/2022/02/14/Docker/index.html">
+<meta property="og:site_name" content="OldYangHead">
+<meta property="og:description" content="What is “Docker”? Let’s study together!">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-02-14T05:48:41.000Z">
+<meta property="article:modified_time" content="2022-02-15T03:13:32.404Z">
+<meta property="article:author" content="SummerYang98">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://summeryang98.github.io/2022/02/14/Docker/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="OldYangHead" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13px;">Docker</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2022/02/14/Docker/" class="title">Docker</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-14T05:48:41.000Z" itemprop="datePublished">2022-02-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/1970/01/01/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="1970-01-01T00:00:00.000Z" itemprop="datePublished">1970-01-01</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Docker" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/02/14/Docker/" class="article-date">
+	  <time datetime="2022-02-14T05:48:41.000Z" itemprop="datePublished">2022-02-14</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/02/14/Docker/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>What is “Docker”? Let’s study together!</p>
+<span id="more"></span>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><ol>
+<li>Docker(容器虚拟化技术)是一个开源的容器引擎，基于Go语言。</li>
+<li>将应用和依赖打包到一个轻量级、可移植的容器中，然后发布到Linux或Windows操作系统的机器上，也可以实现虚拟化。”一次封装，到处运行”。</li>
+<li>Docker是一个用于开发，交付和运行应用程序的开放平台。Docker使应用程序与基础架构分开。利用Docker的方法快速交付，测试和部署代码，减少编写代码和在生产环境中运行代码之间的延迟。</li>
+</ol>
+<h2 id="Docker优点"><a href="#Docker优点" class="headerlink" title="Docker优点"></a>Docker优点</h2><ol>
+<li>更快速地交付和部署</li>
+<li>更便捷的升级和扩缩容</li>
+<li>更简单地系统运维</li>
+<li>更高效地利用计算资源<ol>
+<li>Docker是内核级别的虚拟化，在一个物理机上可以运行很多容器实例。充分发挥服务器性能。</li>
+</ol>
+</li>
+</ol>
+<h2 id="Docker三概念"><a href="#Docker三概念" class="headerlink" title="Docker三概念"></a>Docker三概念</h2><ol>
+<li>**镜像(Image)**：一种轻量级、可执行的独立软件包，用来打包软件运行环境开发的软件，包含运行软件所需的所有内容，包括代码、库、环境变量、配置文件等部分。<ol>
+<li>好比一个模板，可以通过这个模板来创建容器服务。</li>
+<li>镜像——&gt;run——&gt;容器（提供服务）。</li>
+</ol>
+</li>
+<li>**容器(Container)**：镜像是静态的定义，容器是镜像运行时的实体。<ol>
+<li>通过镜像创建，利用容器技术，独立运行一个或一组应用。</li>
+<li>基本命令：启动，停止，删除。</li>
+</ol>
+</li>
+<li>**仓库(Repository)**：存放镜像。<ol>
+<li>公有仓库</li>
+<li>私有仓库</li>
+</ol>
+</li>
+</ol>
+<h2 id="虚拟机技术-amp-容器虚拟化技术："><a href="#虚拟机技术-amp-容器虚拟化技术：" class="headerlink" title="虚拟机技术&amp;容器虚拟化技术："></a>虚拟机技术&amp;容器虚拟化技术：</h2><ol>
+<li>传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整的操作系统，再在系统上运行所需的应用程序。</li>
+<li>容器虚拟化技术允许应用程序<strong>直接运行于宿主机的内核</strong>，容器内没有自己的内核，也没有进行硬件虚拟。更加轻便。各个容器之间相互隔离，每个容器有自己的文件系统，容器之间的进程不会相互影响。</li>
+<li>Docker为什么比VM快：<ol>
+<li>Docker比虚拟机的抽象层更少。docker不需要虚拟化硬件资源，而是使用真实物理机的硬件资源，在CPU、内存利用率上优势明显。</li>
+<li>Docker使用的是宿主机的内核，不需要加载Guest OS。</li>
+</ol>
+</li>
+</ol>
+<h1 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker start        # 启动docker容器</span><br><span class="line">docker run xxx      # 运行xxx</span><br><span class="line">docker 命令 --help  # 帮助 </span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images       # 查看镜像</span><br><span class="line">docker search xxx   # 搜索镜像</span><br><span class="line">docker pull xxx     # 下载镜像</span><br><span class="line">docker rmi -f [ID]  # 删除镜像</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><p>有了镜像才可以创建容器</p>
+<h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run [可选参数] image  # 新建容器并启动</span><br><span class="line">    # 参数说明</span><br><span class="line">    --name=&quot;Name&quot;  容器名字，用来区分容器</span><br><span class="line">    -d             后台方式运行</span><br><span class="line">    -it            使用交互方式运行，进入容器查看内容</span><br><span class="line">    -P             指定容器端口 -p 8080:8080</span><br><span class="line">        -p 主机端口:容器端口</span><br><span class="line">    -p             随机指定端口</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit                        # 退出容器并停止</span><br><span class="line">Ctrl + p + q                # 退出容器不停止</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps                   # 当前所有运行的容器</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器ID               # 删除容器</span><br><span class="line">docker rm -f $(docker ps -aq) # 删除所有容器</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动和停止容器"><a href="#启动和停止容器" class="headerlink" title="启动和停止容器"></a>启动和停止容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker start   容器ID</span><br><span class="line">docker restart 容器ID</span><br><span class="line">docker stop    容器ID</span><br><span class="line">docker kill    容器ID</span><br></pre></td></tr></table></figure>
+
+<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><h3 id="后台启动容器"><a href="#后台启动容器" class="headerlink" title="后台启动容器"></a>后台启动容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d centos</span><br><span class="line"><span class="meta"># </span><span class="language-bash">常见问题，容器后台运行，发现没有提供服务，自动停止</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -tf --tail num 容器ID # 显示指定条数日志</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看容器中进程信息"><a href="#查看容器中进程信息" class="headerlink" title="查看容器中进程信息"></a>查看容器中进程信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入当前正在运行的容器"><a href="#进入当前正在运行的容器" class="headerlink" title="进入当前正在运行的容器"></a>进入当前正在运行的容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">方式一：进入容器开启新中断，可以进行操作(常用)</span></span><br><span class="line">docker exec -it 容器ID bashShell</span><br><span class="line">	如：docker exec -it 291e53f682e3 /bin/bash</span><br><span class="line"><span class="meta"># </span><span class="language-bash">方式二：进入正在执行的终端，不会启动新进程</span></span><br><span class="line">docker attach 容器ID</span><br></pre></td></tr></table></figure>
+
+<h3 id="从容器拷贝文件到主机上"><a href="#从容器拷贝文件到主机上" class="headerlink" title="从容器拷贝文件到主机上"></a>从容器拷贝文件到主机上</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器id:容器内路径 目的主机路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="详细信息"><a href="#详细信息" class="headerlink" title="详细信息"></a>详细信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器ID</span><br></pre></td></tr></table></figure>
+<h1 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h1><h2 id="UnionFS联合文件系统"><a href="#UnionFS联合文件系统" class="headerlink" title="UnionFS联合文件系统"></a>UnionFS联合文件系统</h2><ol>
+<li>分层、轻量级、高性能的文件系统。支持对文件系统的修改作为一次提交来一层层叠加，同时可以将不同目录挂载到同一个虚拟文件系统下。</li>
+<li>UnionFS是Docker镜像的基础，镜像可以通过分层来继承。基于基础镜像，可以制作具体应用镜像。</li>
+</ol>
+<h4 id="UnionFS特征"><a href="#UnionFS特征" class="headerlink" title="UnionFS特征"></a>UnionFS特征</h4><ol>
+<li>一次同时加载多个文件系统，但外部只能看到一个文件系统。联合加载会将各层文件系统叠加起来，这样最终的文件系统会包含所有底层文件和目录。</li>
+</ol>
+<h2 id="Docker镜像加载原理"><a href="#Docker镜像加载原理" class="headerlink" title="Docker镜像加载原理"></a>Docker镜像加载原理</h2><ol>
+<li>Docker镜像由一层一层的文件系统组成，这种层次的文件构成文件系统UnionFS。</li>
+<li>bootfs。Docker镜像的最底层是bootfs。包含boot加载器和内核。</li>
+<li>rootfs。在bootfs之上。包含标准目录和文件。</li>
+</ol>
+<h2 id="分层理解"><a href="#分层理解" class="headerlink" title="分层理解"></a>分层理解</h2><ol>
+<li>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像顶部。</li>
+<li>这个新的层就是容器层。容器之下的都被称为镜像层。</li>
+</ol>
+<h2 id="Commit镜像"><a href="#Commit镜像" class="headerlink" title="Commit镜像"></a>Commit镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line">docker commit -m=&quot;提交的描述信息&quot; -a=&quot;作者&quot; 容器ID 目标镜像名:[TAG]</span><br></pre></td></tr></table></figure>
+
+<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><ol>
+<li>用于容器持久化和容器之间的继承与共享数据。</li>
+<li><strong>容器持久化和同步操作</strong></li>
+</ol>
+<h2 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">方式一：使用命令挂载 -v</span><br><span class="line">docker run -it -v 主机目录:容器内目录</span><br></pre></td></tr></table></figure>
+
+<h2 id="x3D-x3D-具名-x3D-x3D-和匿名挂载"><a href="#x3D-x3D-具名-x3D-x3D-和匿名挂载" class="headerlink" title="&#x3D;&#x3D;具名&#x3D;&#x3D;和匿名挂载"></a>&#x3D;&#x3D;具名&#x3D;&#x3D;和匿名挂载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">匿名挂载</span></span><br><span class="line">-v 容器内路径</span><br><span class="line">docker run -d -P --name nginx01 -v /etc/nginx nginx</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">查看所有volume情况</span></span><br><span class="line">docker volume ls</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># </span><span class="language-bash">具名挂载</span></span><br><span class="line">-v 卷名:容器内路径</span><br><span class="line">docker run -d -P --name nginx02 -v xxx:/etc/nginx nginx</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-v 容器内路径               # 匿名挂载</span><br><span class="line">-v 卷名:容器内路径          # 具名挂载</span><br><span class="line">-v /宿主机路径::容器内路径   # 指定路径挂载</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><ol>
+<li>命名的容器挂载数据卷，其它容器通过挂载这个容器实现数据共享。</li>
+<li>挂载数据卷的容器，称为数据卷容器。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--volumes-from 父容器</span><br><span class="line">	父：docker run -it --name dc01 zzyy/centos</span><br><span class="line">	子：docker run -it --name dc02 --volumes-from dc01 zzyy/centos</span><br></pre></td></tr></table></figure>
+
+<h1 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h1><ol>
+<li>Dockerfile用来构建Docker镜像文件。</li>
+<li>由一系列命令和参数构成的脚本。</li>
+</ol>
+<h2 id="构建步骤"><a href="#构建步骤" class="headerlink" title="构建步骤"></a>构建步骤</h2><ol>
+<li>编写DockerFile文件</li>
+<li>docker build：构建成为一个镜像</li>
+<li>docker run：运行镜像</li>
+<li>docker push 发布镜像（DockerHub、阿里云镜像仓库…）</li>
+</ol>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li>每个指令都是大写字母</li>
+<li>执行从上到下顺序执行</li>
+<li># 表示注释</li>
+<li>每条指令都会创建提交一个新的镜像层，并提交。</li>
+</ol>
+<h2 id="DockerFile-amp-镜像-amp-容器"><a href="#DockerFile-amp-镜像-amp-容器" class="headerlink" title="DockerFile&amp;镜像&amp;容器"></a>DockerFile&amp;镜像&amp;容器</h2><ol>
+<li>DockerFile：构建文件，定义了步骤，源代码。</li>
+<li>Docker Images：通过DockerFile构建生成的镜像，最终发布和运行的产品。</li>
+<li>Docker Container：容器就是镜像运行起来提供服务。</li>
+</ol>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM           # 基础镜像，一切从这里开始</span><br><span class="line">MAINTAINER     # 镜像作者，姓名+邮箱</span><br><span class="line">RUN            # 镜像构建时的运行命令</span><br><span class="line">ADD            # 添加内容</span><br><span class="line">WORKDIR        # 镜像的工作目录</span><br><span class="line">VOLUME         # 挂载的目录</span><br><span class="line">EXPOSE         # 指定暴露端口</span><br><span class="line">CMD            # 指定容器启动时运行的命令,只有最后一个会生效</span><br><span class="line">ENTRYPOINT     # 指定容器启动时运行的命令，可追加命令</span><br><span class="line">ONBUILD        # 触发指令</span><br><span class="line">COPY           # 将文件拷贝到镜像中</span><br><span class="line">ENV            # 构件时设置环境变量</span><br></pre></td></tr></table></figure>
+
+<h1 id="个人操作"><a href="#个人操作" class="headerlink" title="个人操作"></a>个人操作</h1><h2 id="修改容器设置"><a href="#修改容器设置" class="headerlink" title="修改容器设置"></a>修改容器设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /var/lib/docker/containers/[容器ID全称]/hostconfig.json</span><br><span class="line">vi /var/lib/docker/containers/[容器ID全称]/config.v2.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker进入root"><a href="#Docker进入root" class="headerlink" title="Docker进入root"></a>Docker进入root</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker容器Ubuntu拒绝连接"><a href="#Docker容器Ubuntu拒绝连接" class="headerlink" title="Docker容器Ubuntu拒绝连接"></a>Docker容器Ubuntu拒绝连接</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># </span><span class="language-bash">进入ubuntu后</span></span><br><span class="line">service ssh start</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker-Hub"><a href="#Docker-Hub" class="headerlink" title="Docker Hub"></a>Docker Hub</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hub.docker.com/</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://summeryang98.github.io/2022/02/14/Docker/" title="Docker" target="_blank" rel="external">http://summeryang98.github.io/2022/02/14/Docker/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/1970/01/01/hello-world/" title="Hello World"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
